@@ -7,7 +7,7 @@ Do all of your javascript work in one file (`server.js`). No need to break thing
 - Add a `.gitignore` file that ignores will not commit your `/node_modules` folder
 - Bring `express` into your project using npm (see comments at top of server.js for help)
 - Your application should run on `localhost:5000`
-- the route `/` should return and `index.html` file that says `Welcome to the Express Express`
+- the route `/` should return the `index.html` file that says `Welcome to the Express Express`
 - `localhost:5000/train` should return the list of all trains
 - `localhost:5000/first-train` should return the first train object in the array
 - `localhost:5000/last-train` should return the last train object in the array
