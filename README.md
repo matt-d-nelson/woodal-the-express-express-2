@@ -15,6 +15,6 @@ Do all of your javascript work in one file (`server.js`). No need to break thing
 ## Stretch
 
 - `localhost:5000/count` should return the number of trains in the array
-- `localhost:5000/random` should return the last train object in the array
+- `localhost:5000/random` should return a random train every time the route is visited
 - Move the list of trains into `modules/trains.js`
 - Moment is a common javascript module used for time. `npm install moment` and use it to show the time of the next train. Trains run every ten minutes starting at the top of the hour. So visiting `localhost:5000/next` at 2:35pm should should `2:40pm` as the result.
