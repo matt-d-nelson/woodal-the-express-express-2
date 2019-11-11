@@ -1,5 +1,11 @@
 # the-express-express
 
+## Objectives
+
+- Practice setting up an Express web server
+- Configure Express to serve static files
+- Configure GET routes to send back data
+
 ## Base
 
 Do all of your javascript work in one file (`server.js`). No need to break things out into other files yet.
