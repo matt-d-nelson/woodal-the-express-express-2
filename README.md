@@ -6,7 +6,7 @@
 - Configure Express to serve static files
 - Configure GET routes to send back data
 
-## Base
+## Part 1
 
 Do all of your javascript work in one file (`server.js`). No need to break things out into other files yet.
 
@@ -14,6 +14,11 @@ Do all of your javascript work in one file (`server.js`). No need to break thing
 - Bring `express` into your project using npm (see comments at top of server.js for help)
 - Your application should run on `localhost:5000`
 - the route `/` should return the `index.html` file that says `Welcome to the Express Express`
+- The `index.html` file should load a CSS file, which changes the background color of the page
+- The `index.html` file should load a `jquery.js` and `client.js` file, which logs `"I'm ready"` on `$(document).ready()`.
+
+## Part 2
+
 - `localhost:5000/train` should return the list of all trains
 - `localhost:5000/first-train` should return the first train object in the array
 - `localhost:5000/last-train` should return the last train object in the array
