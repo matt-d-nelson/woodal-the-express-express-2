@@ -3,14 +3,17 @@
 
 
 // create your express app
+const express = require('express');
+const trains = require('./modules/trains');
+console.log(trains);
+
+const app = express();
+const port = 5000;
 
 // This is your array of trains
-const trains = [
-    { name: 'Thomas', color: 'Blue' },
-    { name: 'Gordon', color: 'Blue' },
-    { name: 'Henry', color: 'Green' },
-    { name: 'James', color: 'Red' }
-];
+// Moved to server/modules/trains.js
+
+app.use(express.static('./server/public'));
 
 // -------- BASE -----//
 
@@ -47,3 +50,6 @@ const trains = [
 // -------- BASE -----//
 
 // Don't forget to start your app by running `.listen()`
+app.listen(port, ()=>{
+    console.log('server up on: ', port);
+});
