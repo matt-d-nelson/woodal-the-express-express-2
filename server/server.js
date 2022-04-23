@@ -73,9 +73,42 @@ function randomTrain() {
     return {'Random train': trains[randTrainIdx]}; //use the randomly generated index to select a train from the trains array
 }
 
+//Moment is a common javascript module used for time. npm install moment and use it to show the time of the next train. 
+//Trains run every ten minutes starting at the top of the hour. 
+//So visiting localhost:5000/next at 2:35pm should should 2:40pm as the result.
+const moment = require('moment'); //import moment module
+
+router.get('/next', (req, res)=>{
+    console.log('next GET');
+    res.send(nextTrain());
+});
+
+function nextTrain() {
+    thisMoment = {
+        hour: moment().hour(), //get the current hour
+        minute: moment().minute() //get the current minute
+    };
+    if (thisMoment.hour > 12) thisMoment.hour -= 12; //convert from military time
+    console.log(thisMoment);
+
+    let returnMinute = -1;
+    if (thisMoment.minute % 10 === 0) { //if the thisMoment.minute is divisible by 10, a train has just arrived but the client will probably miss this train
+        returnMinute = thisMoment.minute +10; //set returnMinute to display the time for the next train
+    } else {
+        //divide thisMoment.minute by 10 to move the decimal one to the left (e.g. 12 will return 1.2) 
+        //Math.ceil rounds up to the nearest integer (e.g. 1.2 will return 2)
+        //multiply by 10 to move the decimal one to the right (e.g. 2 will return 20)
+        returnMinute = Math.ceil(thisMoment.minute/10)*10;
+    }
+    if (returnMinute > 50) { //If return minute is greater than 50, then the next train will arrive on the hour...
+        return {'The time at which the next train arrives': `${thisMoment.hour+1}:00`} //so add 1 to the hour and set the minute to 0
+    }
+    return {'The time at which the next train arrives': `${thisMoment.hour}:${returnMinute}`} //return the hour and the ciel'd minute
+}
+
 // -------- BASE -----//
 
 // Don't forget to start your app by running `.listen()`
 app.listen(port, ()=>{
-    console.log('server up on: ', port);
+    console.log('server up on:', port);
 });
