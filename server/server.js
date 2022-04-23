@@ -3,28 +3,37 @@
 
 
 // create your express app
-const express = require('express');
-const trains = require('./modules/trains');
-console.log(trains);
+const express = require('express'); //import express module
+const trains = require('./modules/trains'); //import trains module
+console.log(trains); 
 
-const app = express();
-const port = 5000;
+const app = express(); //create an express server and store in 'app'
+const router = express.Router();
+const port = 5000; //create variable for listening port
 
 // This is your array of trains
 // Moved to server/modules/trains.js
 
-app.use(express.static('./server/public'));
-
+app.use(express.static('./server/public')); //source in public files
+app.use('/', router); //tell 'app' to use router for root level requests
 // -------- BASE -----//
 
 // Create your `/train` route here
 // when a user visits localhost:5000/train
 // this route should return the array of trains
+router.get('/train', (req, res)=>{
+    console.log('trains GET');
+    res.send(trains);
+});
 
 
 // Create your `/first-train` route here
 // when a user visits localhost:5000/first-train
 // this route should return the first train in the array
+router.get('/first-train', (req, res)=>{
+    console.log('first-train GET');
+    res.send(trains[0]);
+});
 
 
 // Create your `/last-train` route here
