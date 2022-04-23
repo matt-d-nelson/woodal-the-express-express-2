@@ -39,7 +39,10 @@ router.get('/first-train', (req, res)=>{
 // Create your `/last-train` route here
 // when a user visits localhost:5000/last-train
 // this route should return the last train in the array
-
+router.get('/last-train', (req, res)=>{
+    console.log('last-train GET');
+    res.send(trains[trains.length-1]);
+});
 
 
 // -------- STRETCH -----//
