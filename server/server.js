@@ -55,12 +55,23 @@ router.get('/last-train', (req, res)=>{
 router.get('/count', (req, res) =>{
     console.log('count GET');
     res.send({'Total number of trains': trains.length});
-})
+});
 
 // Create your `/random` route here
 // when a user visits localhost:5000/random
 // this route should return a single train at random
+router.get('/random', (req, res)=>{
+    console.log('random GET');
+    res.send(randomTrain());
+});
 
+function randomTrain() {
+    //Math.random() generates a random number between 0-1
+    //multiply that number by the length of the trains array
+    //use Math.floor to round the random number so that it is always a whole number and therefore a usable index
+    let randTrainIdx = Math.floor(Math.random()*trains.length); 
+    return {'Random train': trains[randTrainIdx]}; //use the randomly generated index to select a train from the trains array
+}
 
 // -------- BASE -----//
 
